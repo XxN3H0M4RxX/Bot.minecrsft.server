@@ -7,7 +7,6 @@ http.createServer((req, res) => {
 }).listen(constport);
 
 const mineflayer = require('mineflayer');
-const { forgeHandshake } = require('mineflayer-forge'); // <--- 1. Importas el plugin de Forge
 
 function createBot() {
   const bot = mineflayer.createBot({
@@ -15,8 +14,6 @@ function createBot() {
     username: 'Bot_AntiLimbo',
     version: '1.20.1'
   });
-
-  forgeHandshake(bot); // <--- 2. Activas el handshake aquí para aceptar los mods de TACZ
 
   bot.on('spawn', () => {
     console.log('Bot conectado al server fino.');
