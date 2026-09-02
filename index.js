@@ -1,32 +1,25 @@
 const http = require('http');
-const port = process.env.PORT || 10000;
+const constport = process.env.PORT || 10000;
 
 http.createServer((req, res) => {
   res.writeHead(200, { 'Content-Type': 'text/plain' });
   res.end('Bot activo');
-}).listen(port);
-
-
-
-
-
-
-
-
-
+}).listen(constport);
 
 const mineflayer = require('mineflayer');
+const { forgeHandshake } = require('mineflayer-forge'); // <--- 1. Importas el plugin de Forge
 
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'pepe2026.play.hosting',
     username: 'Bot_AntiLimbo',
-    version: '1.20.1' // Ajusta a la versión de tu server
+    version: '1.20.1'
   });
+
+  forgeHandshake(bot); // <--- 2. Activas el handshake aquí para aceptar los mods de TACZ
 
   bot.on('spawn', () => {
     console.log('Bot conectado al server fino.');
-    // Salta cada 30 seg para que el server no lo bote por AFK
     setInterval(() => {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
