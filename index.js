@@ -20,7 +20,6 @@ const mineflayer = require('mineflayer');
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'pepe2026.play.hosting',
-    port: 34777,
     username: 'Bot_AntiLimbo',
     version: '1.20.1' // Ajusta a la versión de tu server
   });
