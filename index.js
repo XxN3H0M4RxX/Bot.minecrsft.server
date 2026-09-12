@@ -7,18 +7,18 @@ http.createServer((req, res) => {
 }).listen(constport);
 
 const mineflayer = require('mineflayer');
+require('minecraft-protocol-forge');
 
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'pepe2026.play.hosting',
     username: 'Bot_Antilimbo',
     version: '1.20.1',
-    checkTimeout: 60000,
-    skipValidation: true
+    protocol: 'forge'
   });
 
   bot.on('spawn', () => {
-    console.log('Bot conectado al server fino.');
+    console.log('Bot conectado al server con mods.');
     setInterval(() => {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
