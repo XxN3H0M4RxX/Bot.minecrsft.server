@@ -14,14 +14,13 @@ function createBot() {
     host: 'pepe2026.play.hosting',
     username: 'Bot_Antilimbo',
     version: '1.20.1',
-    // Aquí forzamos el protocolo forge y simulamos la lista de mods del servidor
     protocol: 'forge',
     forgeSendsHandshake: true,
     checkTimeout: 60000
   });
 
   bot.on('spawn', () => {
-    console.log('Bot conectado al server con mods sin pechar.');
+    console.log('Bot conectado al servidor con mods.');
     setInterval(() => {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
