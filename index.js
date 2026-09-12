@@ -11,8 +11,10 @@ const mineflayer = require('mineflayer');
 function createBot() {
   const bot = mineflayer.createBot({
     host: 'pepe2026.play.hosting',
-    username: 'Bot_AntiLimbo',
-    version: '1.20.1'
+    username: 'Bot_Antilimbo',
+    version: '1.20.1',
+    checkTimeout: 60000,
+    skipValidation: true
   });
 
   bot.on('spawn', () => {
@@ -21,6 +23,10 @@ function createBot() {
       bot.setControlState('jump', true);
       setTimeout(() => bot.setControlState('jump', false), 500);
     }, 30000);
+  });
+
+  bot.on('kicked', (reason) => {
+    console.log('El servidor expulsó al bot:', reason);
   });
 
   bot.on('end', () => {
